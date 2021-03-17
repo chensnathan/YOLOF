@@ -1,7 +1,7 @@
 # You Only Look One-level Feature (YOLOF), CVPR2021
 A simple, fast, and efficient object detector **without** FPN.
 
-- This repo provides an neat implementation for YOLOF based on Detectron2. A [`cvpods`](https://github.com/Megvii-BaseDetection/cvpods) version can be 
+- This repo provides a neat implementation for YOLOF based on Detectron2. A [`cvpods`](https://github.com/Megvii-BaseDetection/cvpods) version can be 
   found in [https://github.com/megvii-model/YOLOF](https://github.com/megvii-model/YOLOF).
 
 > [**You Only Look One-level Feature**](http://arxiv.org/abs/xxx),            
