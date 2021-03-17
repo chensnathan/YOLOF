@@ -1,0 +1,5 @@
+_BASE_: "yolof_CSP_D_53_DC5_3x.yaml"
+SOLVER:
+  STEPS: (187500, 197500)
+  MAX_ITER: 202500
+OUTPUT_DIR: "output/yolof/CSP_D_53_DC5_9x"
