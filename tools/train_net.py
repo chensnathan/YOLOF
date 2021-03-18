@@ -25,7 +25,6 @@ import torch
 import torch.nn as nn
 
 import detectron2.utils.comm as comm
-from detectron2.checkpoint import DetectionCheckpointer
 from detectron2.data import (
     MetadataCatalog, build_detection_train_loader, build_detection_test_loader
 )
@@ -45,6 +44,7 @@ from detectron2.evaluation import (
 )
 from detectron2.modeling import GeneralizedRCNNWithTTA
 
+from yolof.checkpoint import YOLOFCheckpointer
 from yolof.config import get_cfg
 from yolof.data import YOLOFDtasetMapper
 
@@ -196,7 +196,7 @@ def main(args):
 
     if args.eval_only:
         model = Trainer.build_model(cfg)
-        DetectionCheckpointer(model, save_dir=cfg.OUTPUT_DIR).resume_or_load(
+        YOLOFCheckpointer(model, save_dir=cfg.OUTPUT_DIR).resume_or_load(
             cfg.MODEL.WEIGHTS, resume=args.resume
         )
         res = Trainer.test(cfg, model)
