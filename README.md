@@ -4,8 +4,10 @@ A simple, fast, and efficient object detector **without** FPN.
 - This repo provides a neat implementation for YOLOF based on Detectron2. A [`cvpods`](https://github.com/Megvii-BaseDetection/cvpods) version can be 
   found in [https://github.com/megvii-model/YOLOF](https://github.com/megvii-model/YOLOF).
 
-> [**You Only Look One-level Feature**](http://arxiv.org/abs/xxx),            
+> [**You Only Look One-level Feature**](https://arxiv.org/abs/2103.09460),            
 > Qiang Chen, Yingming Wang, Tong Yang, Xiangyu Zhang, Jian Cheng, Jian Sun
+
+![image](images/yolof.png)
 
 ## Getting Started
 
