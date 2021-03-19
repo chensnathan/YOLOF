@@ -57,6 +57,7 @@ More models will be available in the near future.
 | YOLOF_R_101_C5_1x                         |  39.8         |   23  |
 | YOLOF_R_101_DC5_1x                        |  40.5         |   17  |
 | YOLOF_CSP_D_53_DC5_3x                     |  41.2         |   41  |
+| YOLOF_CSP_D_53_DC5_9x                     |  42.8         |   41  |
 
 - Note that, the speed reported in this repo is 2~3 FPS faster than the one 
   reported in the cvpods version.
