@@ -16,6 +16,7 @@ from detectron2.modeling.meta_arch import META_ARCH_REGISTRY
 from detectron2.modeling.postprocessing import detector_postprocess
 from detectron2.layers import batched_nms, cat, nonzero_tuple
 from detectron2.structures import Boxes, ImageList, Instances
+from detectron2.utils import comm
 from detectron2.utils.events import get_event_storage
 
 from .encoder import DilatedEncoder
@@ -384,8 +385,9 @@ class YOLOF(nn.Module):
         gt_classes_target = torch.zeros_like(pred_class_logits)
         gt_classes_target[foreground_idxs, gt_classes[foreground_idxs]] = 1
 
-        dist.all_reduce(num_foreground)
-        num_foreground = num_foreground * 1.0 / dist.get_world_size()
+        if comm.get_world_size() > 1:
+            dist.all_reduce(num_foreground)
+        num_foreground = num_foreground * 1.0 / comm.get_world_size()
 
         # cls loss
         loss_cls = sigmoid_focal_loss_jit(
