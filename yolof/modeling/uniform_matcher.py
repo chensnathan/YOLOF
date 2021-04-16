@@ -15,6 +15,15 @@ class UniformMatcher(nn.Module):
     Uniform Matching between the anchors and gt boxes, which can achieve
     balance in positive anchors.
 
+    Note:
+        In this implementation, we combine the indexes of topk anchors and
+        topk predicted boxes. There exist duplicates between the indexes of
+        topk predicts boxes and the indexes of topk anchors. The topk
+        predict boxes' non-duplicate indexes serve as additional indexes,
+        which help the model train better. This implementation gives stable
+        and slightly higher performance than only using topk anchors.
+
+
     Args:
         match_times(int): Number of positive anchors for each gt box.
     """

@@ -342,6 +342,14 @@ class YOLOF(nn.Module):
             pred_anchor_deltas, all_anchors)
         predicted_boxes = predicted_boxes.reshape(N, -1, 4)
 
+        # We obtain positive anchors by choosing gt boxes' k nearest anchors
+        # and leave the rest to be negative anchors. However, there may
+        # exist negative anchors that have similar distances with the chosen
+        # positives. These negatives may cause ambiguity for model training
+        # if we just set them as negatives. Given that we want the model's
+        # predict boxes on negative anchors to have low IoU with gt boxes,
+        # we set a threshold on the IoU between predicted boxes and gt boxes
+        # instead of the IoU between anchor boxes and gt boxes.
         ious = []
         pos_ious = []
         for i in range(N):
